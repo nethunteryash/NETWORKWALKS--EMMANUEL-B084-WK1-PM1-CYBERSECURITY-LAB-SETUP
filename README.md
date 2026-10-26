@@ -128,8 +128,6 @@ RAM: 2048 MB
 ![](KaliNetworkSetup.png)
 A shared folder was also configured for transferring required files between the host operating system and the Kali VM.
 
-
-
 ---
 
 ## Configure the Kali Linux Network
@@ -153,7 +151,7 @@ A consistent IP address makes it easier to document the lab and reference the Ka
 
 ---
 
-## Step 6. Create a Clean VM Snapshot
+## Create a Clean VM Snapshot
 
 After completing the initial configuration, a VirtualBox snapshot was created.
 
@@ -167,32 +165,91 @@ The snapshot represents the clean baseline of the laboratory.
 
 If a future exercise changes or damages the VM configuration, the machine can be restored to this baseline.
 
+---
+
+## Install Windows 10
+
+The Windows10 ISO File was downloaded from the official Microsoft website and Setup into VirtualBox.
+
+![](WindowsDownloadProcess.png)
+
+The VM network adapter was configured as follows:
+
+```text
+Adapter 1
+Attached to: NAT Network
+Network:     NatNetwork1
+Adapter Type: Intel PRO/1000 MT Desktop
+```
+
+The VM was allocated:
+
+```text
+RAM: 4096 MB
+```
 
 ---
 
-# 🔎 Lab Verification
+## Configure the Windows 10 Network
 
-| ✅ Test                       | 🧾 Command                      | 🎯 Expected Result            |
-| ----------------------------- | ------------------------------- | ------------------------------- |
-| 🌐 Check IP address           | `ip a`                          | Correct Kali IP displayed       |
-| 📡 Test gateway               | `ping 10.0.0.1`                 | Successful replies              |
-| 🌍 Test Internet connectivity | `ping 8.8.8.8`                  | Successful replies              |
-| 🔎 Test DNS resolution        | `nslookup networkwalks.com`     | Domain resolves                 |
-| 🧰 Verify Nmap                | `nmap --version`                | Nmap version displayed          |
-| 🔄 Verify snapshot            | Restore snapshot and run `ip a` | Baseline configuration restored |
+The Windows 10 network configuration was checked and configured with a consistent IPv4 address.
 
-### Example Results
+Example configuration:
 
 ```text
-IP Address:
-10.0.0.2/24
-
-Gateway:
-10.0.0.1
-
-DNS:
-8.8.8.8
+IP Address: 10.0.0.10
+Subnet Mask: 255.255.255.0
+Gateway: 10.0.0.1
+DNS: 8.8.8.8
 ```
+
+A consistent IP address makes it easier to document the lab and reference the Windows 10 in future exercises.
+
+![](Windows-IP-Change.png)
+
+**This Image Shows Correct Image of Windows 10 Address**
+
+---
+
+## Install Android-x86
+
+The Android-x86 ISO File was downloaded from the official Android-x86 website and Setup into VirtualBox.
+
+The VM network adapter was configured as follows:
+
+```text
+Adapter 1
+Attached to: NAT Network
+Network:     NatNetwork1
+Adapter Type: Intel PRO/1000 MT Desktop
+```
+
+The VM was allocated:
+
+```text
+RAM: 2048 MB
+```
+
+---
+
+## Configure the Android-x86 Network
+
+The Android-x86 network configuration was checked and configured with a consistent IPv4 address.
+
+Example configuration:
+
+```text
+IP Address: 10.0.0.9
+Subnet Mask: 255.255.255.0
+Gateway: 10.0.0.1
+DNS: 8.8.8.8
+```
+
+A consistent IP address makes it easier to document the lab and reference the Android-x86 in future exercises.
+
+![](Windows-IP-Change.png)
+
+**This Image Shows Correct Image of Android-x86 Address**
 
 ---
 
