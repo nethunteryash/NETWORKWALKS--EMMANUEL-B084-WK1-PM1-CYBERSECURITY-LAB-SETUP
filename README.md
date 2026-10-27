@@ -215,6 +215,8 @@ A consistent IP address makes it easier to document the lab and reference the Wi
 
 The Android-x86 ISO File was downloaded from the official Android-x86 website and Setup into VirtualBox.
 
+![](AndroidDownloadProcess.png)
+
 The VM network adapter was configured as follows:
 
 ```text
@@ -247,24 +249,43 @@ DNS: 8.8.8.8
 
 A consistent IP address makes it easier to document the lab and reference the Android-x86 in future exercises.
 
-![](Windows-IP-Change.png)
+![](Android-IP-Change.png)
 
 **This Image Shows Correct Image of Android-x86 Address**
 
 ---
 
+# Ping Test of Android-x86 and Windows with Kali Linux
+
+## Android-x86 with Kali Linux
+
+![](Android-Kali-PingTest.png)
+
+---
+
+![](Kali-Android-PingTest.png)
+
+## Windows 10 with Kali Linux
+
+![](Windows-Kali-PingTest.png)
+
+---
+
+![](Kali-Windows-PingTest.png)
+
 # 🐞 Problems Encountered & Solutions
 
 Documenting problems is an important part of the project.
 
-## Problem 1. Internet Connectivity After Static IP Configuration
+## Problem 1. Internet Connectivity After VM Freeze and Machine Returns to SnapShot **Here The Snapshot Helped me**
 
 After manually configuring the IPv4 settings, Internet connectivity may fail depending on the Kali/NetworkManager configuration.
-
 One workaround used during this lab was:
 
 ```bash
 sudo nmcli connection modify "Wired connection 1" ipv4.dad-timeout 0
+sudo nmcli connection down "Wired connection 1"
+sudo nmcli connection up "Wired connection 1"
 ```
 
 The network connection was then restarted/rebooted and connectivity was tested again.
@@ -273,21 +294,42 @@ The network connection was then restarted/rebooted and connectivity was tested a
 
 ---
 
-## Problem 2. VirtualBox VT-x / Virtualization Error
+## Problem 2. Windows Boot Loop
 
-The VM initially failed to start because hardware virtualization was disabled in the system firmware/BIOS.
+During Installation of Windows 10 on Virtualbox, After the First Reboot after windows 10 says, it installed successfully. then you see a line **Press any key to boot from CD or DVD._** .
+It is a step we really **NOT** to press any key, just wait... Then You Got your window installed. and next time, remove the ISO File from Settings or Just Delete from your Host Downloads...
 
-The issue was resolved by:
+## Problem 2. Android-x86 Setup Issue
 
-1. Restarting the computer.
-2. Entering BIOS/UEFI settings.
-3. Enabling Intel VT-x / hardware virtualization.
-4. Saving the configuration.
-5. Restarting the computer.
-6. Starting the Kali VM again.
-
-After enabling virtualization, the VM started successfully.
-
+As Written in the Manual, I do the same step But it stuck/freeze at Boot ...
+Then I researched and I found the best Solution...
+When it says reboot or Run Android-x86 , Click Reboot then,
+- choose Advanced Options
+- Choose Boot from Local Drive
+- press 'e' to  see Kernel option
+- again press 'e' to edit the first line
+- using arrow keys slide to **root=/dev/ram0** add **nomodeset xforcevesa** before **root**
+- like - **nomodeset xforcevesa root=/dev/ram0** - **Don't remove anything, Add in middle**
+- Press Enter after Edit
+- Press 'b' to boot
+- then wait untill Android got its bootloader
+- then press 'Alt+F1'
+- run these commands
+```bash
+mkdir /mnt/sda
+mount /dev/block/sda1/ /mnt/sda
+vi /mnt/sda/grub/menu.lst
+```
+- This will open boot setting
+- press 'i' for editing
+- then add **nomodeset xforcevesa** before **root** in Title Android-x86 9.0-r2
+- and at 2nd line, change timeout value from 6 to 2
+- then press 'esc'
+- then press ':'
+- then write 'wq'
+- then enter
+- you will get to console again
+- reboot and Wait, then your andriod will be booted without error
 
 ---
 
