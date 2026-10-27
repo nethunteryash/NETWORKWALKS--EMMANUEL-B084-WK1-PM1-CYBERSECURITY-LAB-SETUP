@@ -392,7 +392,7 @@ This laboratory is intended strictly for education purposes only.
 **YASH MITTAL**\
 InternID - NW-084-002
 
-LinkedIn: [https://www.linkedin.com/in/yash-mittal-b73682382/](https://www.linkedin.com/in/yash-mittal-b73682382/)
+LinkedIn: [https://www.linkedin.com/in/nethunteryash/](https://www.linkedin.com/in/nethunteryash/)
 
 ---
 
