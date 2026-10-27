@@ -10,7 +10,7 @@
 
 ## 📌 Project Overview
 
-In this Project You will Learn about **HOW TO SETUP VIRTUAL ENVIRONMENT WITH KALI LINUX + WINDOWS + ANDROID** With Full pentesting and hacking without damaging Your Main Computer.
+In this Project You will Learn about **HOW TO SETUP VIRTUAL ENVIRONMENT WITH KALI LINUX + WINDOWS + ANDROID** With Full Pentesting and Hacking Environment without damaging Your Main Computer.
 We will setup on these machines/OS on single Network, Like they are connected on same Wifi or Ethernet...
 
 ---
@@ -35,13 +35,13 @@ We will setup on these machines/OS on single Network, Like they are connected on
 The lab provides an isolated and controlled environment for cybersecurity learning and authorized security testing.
 It can be used for activities such as:
 
-- Network reconnaissance (Nmap, Shodan, Recon-NG, Maltego, Amass)
-- Port scanning (Nmap, RustScan, Netcat)
-- Vulnerability assessment (Nessus, OpenVAS, Nikto)
-- Packet analysis (Wireshark, tcpdump, Zeek)
-- Web security testing (Burp Suite, SQLMap, OWASP ZAP)
-- Exploitation practice (MetaSploit, Silver, BeEF)
-- Security-tool experimentation (Kali Linux, ParrotOS, BlackArch)
+- Network reconnaissance **(Nmap, Shodan, Recon-NG, Maltego, Amass)**
+- Port scanning **(Nmap, RustScan, Netcat)**
+- Vulnerability assessment **(Nessus, OpenVAS, Nikto)**
+- Packet analysis **(Wireshark, tcpdump, Zeek)**
+- Web security testing **(Burp Suite, SQLMap, OWASP ZAP)**
+- Exploitation practice **(MetaSploit, Silver, BeEF)**
+- Security-tool experimentation **(Kali Linux, ParrotOS, BlackArch)**
 
 ⚠️ **Important:** This laboratory must only be used for systems that you own or have explicit permission to test. Do not use the lab or its tools to attack unauthorized systems.
 
@@ -64,7 +64,7 @@ It can be used for activities such as:
 |🧠Windows RAM          |4096 MB            |
 |🖥️Windows 10 IP Address|10.0.0.10/24       |
 |🧠Android RAM          |2048 MB            |
-|🖥️Android IP Address  |10.0.0.9/24         |
+|🖥️Android-x86 IP Address  |10.0.0.9/24    |
 | 🚪 Default Gateway | 10.0.0.1           |
 | 🌍 DNS Server      | 8.8.8.8            |
 | 🔮 Future VM Range | 10.0.0.3–10.0.0.99 |
@@ -277,7 +277,7 @@ A consistent IP address makes it easier to document the lab and reference the An
 
 Documenting problems is an important part of the project.
 
-## Problem 1. Internet Connectivity After VM Freeze and Machine Returns to SnapShot **Here The Snapshot Helped me**
+## Problem 1. Internet Connectivity After VM Freeze and Machine Returns to SnapShot | **Here The Snapshot Helped me**
 
 After manually configuring the IPv4 settings, Internet connectivity may fail depending on the Kali/NetworkManager configuration.
 One workaround used during this lab was:
@@ -299,7 +299,7 @@ The network connection was then restarted/rebooted and connectivity was tested a
 During Installation of Windows 10 on Virtualbox, After the First Reboot after windows 10 says, it installed successfully. then you see a line **Press any key to boot from CD or DVD._** .
 It is a step we really **NOT** to press any key, just wait... Then You Got your window installed. and next time, remove the ISO File from Settings or Just Delete from your Host Downloads...
 
-## Problem 2. Android-x86 Setup Issue
+## Problem 3. Android-x86 Setup Issue
 
 As Written in the Manual, I do the same step But it stuck/freeze at Boot ...
 Then I researched and I found the best Solution...
@@ -309,7 +309,10 @@ When it says reboot or Run Android-x86 , Click Reboot then,
 - press 'e' to  see Kernel option
 - again press 'e' to edit the first line
 - using arrow keys slide to **root=/dev/ram0** add **nomodeset xforcevesa** before **root**
-- like - **nomodeset xforcevesa root=/dev/ram0** - **Don't remove anything, Add in middle**
+```bash
+  nomodeset xforcevesa root=/dev/ram0
+```
+- **Don't remove anything, Add in middle**
 - Press Enter after Edit
 - Press 'b' to boot
 - then wait untill Android got its bootloader
@@ -323,6 +326,9 @@ vi /mnt/sda/grub/menu.lst
 - This will open boot setting
 - press 'i' for editing
 - then add **nomodeset xforcevesa** before **root** in Title Android-x86 9.0-r2
+```bash
+  nomodeset xforcevesa root=/dev/ram0
+```
 - and at 2nd line, change timeout value from 6 to 2
 - then press 'esc'
 - then press ':'
@@ -342,9 +348,7 @@ The most important concepts I learned include:
 ### 1. NAT vs NAT Network
 
 A standard NAT configuration and a NAT Network serve different purposes.
-
 A NAT Network allows multiple VMs connected to the same virtual network to communicate with one another while providing network address translation for external connectivity.
-
 This makes it useful for building a multi-machine cybersecurity laboratory.
 
 ### 2. Virtual Machine Networking
@@ -353,7 +357,7 @@ I learned how VirtualBox virtual network adapters connect virtual machines to di
 
 ### 3. Static IP Configuration
 
-I learned how to configure and verify IPv4 addressing, subnet masks, gateways, and DNS settings in Kali Linux.
+I learned how to configure and verify IPv4 addressing, subnet masks, gateways, and DNS settings in Kali Linux, Windows 10 and Android-x86.
 
 ### 4. VM Snapshots
 
@@ -378,15 +382,17 @@ This laboratory is intended strictly for education purposes only.
 - **7-Zip:** [https://7-zip.org/download.html](https://7-zip.org/download.html)
 - **VirtualBox:** [https://virtualbox.org/wiki/Downloads](https://virtualbox.org/wiki/Downloads)
 - **Kali Linux:** [https://kali.org/get-kali](https://kali.org/get-kali)
+- **Windows 10:** [microsoft.com/en-in/software-download/windows10iso](microsoft.com/en-in/software-download/windows10iso)
+- **Android-x86:** [https://www.android-x86.org/download](https://www.android-x86.org/download)
 
 ---
 
 # 👤 Author
 
-**Waqas Karim**\
-Cybersecurity Professional B082
+**YASH MITTAL**\
+InternID - NW-084-002
 
-LinkedIn: [https://www.linkedin.com/in/waqaskarim/](https://www.linkedin.com/in/waqaskarim/)
+LinkedIn: [https://www.linkedin.com/in/yash-mittal-b73682382/](https://www.linkedin.com/in/yash-mittal-b73682382/)
 
 ---
 
